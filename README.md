@@ -1,6 +1,10 @@
 # CameraMask
 **LatestVersion**
 
+[ ![Download](https://api.bintray.com/packages/justinquote/maven/guidance-component/images/download.svg) ](https://bintray.com/justinquote/maven/guidance-component/_latestVersion)
+
+<a href='https://bintray.com/justinquote/maven/guidance-component?source=watch' alt='Get automatic notifications about new "guidance-component" versions'><img src='https://www.bintray.com/docs/images/bintray_badge_greyscale.png'></a>
+
 function guidance library and demo
 
 
@@ -11,11 +15,16 @@ Scan QRCode to download demo application below:
 ### 1、implementation
 + 1.1、Gradle
 ```
-
+implementation 'jsc.kit.guidance:guidance-component:_lastVersion'
 ```
 + 1.2、Maven
 ```
-
+<dependency>
+  <groupId>jsc.kit.guidance</groupId>
+  <artifactId>guidance-component</artifactId>
+  <version>_lastVersion</version>
+  <type>pom</type>
+</dependency>
 ```
 
 ### 2、attrs
