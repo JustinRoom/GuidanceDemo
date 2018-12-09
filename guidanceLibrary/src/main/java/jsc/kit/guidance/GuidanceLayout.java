@@ -125,7 +125,7 @@ public class GuidanceLayout extends FrameLayout {
      * @param layoutId layout id
      * @param l1       listener for creating layout params
      * @param l2       click listener
-     * @param <V>      the view type of {@link #inflate(Context, int, ViewGroup)}
+     * @param <V>      the type of custom view
      */
     public <V extends View> void addCustomView(@LayoutRes int layoutId, OnCustomViewAddListener<V> l1, View.OnClickListener l2) {
         V customView = (V) inflate(getContext(), layoutId, this);
@@ -145,7 +145,7 @@ public class GuidanceLayout extends FrameLayout {
      * @param l                  the left margin
      * @param t                  the top margin
      * @param rippleViewSize     the size of {@link #rippleViewView}
-     * @param rippleClipToTarget true, clip {@link #rippleViewView} to {@link #targetRect} area. See {@link android.graphics.Canvas#clipRect(Rect)}.
+     * @param rippleClipToTarget true, clip {@link #rippleViewView} to {@link #targetRect} area.
      */
     public void updateTargetViewLocation(@NonNull View targetView, int l, int t, int rippleViewSize, boolean rippleClipToTarget, OnRippleViewLocationUpdatedCallback callback) {
         Bitmap bitmap = ViewDrawingCacheUtils.getDrawingCache(targetView);
@@ -159,7 +159,7 @@ public class GuidanceLayout extends FrameLayout {
      * @param l                  the left margin
      * @param t                  the top margin
      * @param listener           listener for initializing {@link #rippleViewView}'s size
-     * @param rippleClipToTarget true, clip {@link #rippleViewView} to {@link #targetRect} area. See {@link android.graphics.Canvas#clipRect(Rect)}.
+     * @param rippleClipToTarget true, clip {@link #rippleViewView} to {@link #targetRect} area.
      */
     public void updateTargetViewLocation(@NonNull View targetView, int l, int t, OnInitRippleViewSizeListener listener, boolean rippleClipToTarget, OnRippleViewLocationUpdatedCallback callback) {
         Bitmap bitmap = ViewDrawingCacheUtils.getDrawingCache(targetView);
