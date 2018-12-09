@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="GuidanceRippleView">
+        <!--最大波纹圈数-->
+        <attr name="grvCount" format="integer"/>
+        <!--两个波纹圈之间距离间隔-->
+        <attr name="grvSpace" format="dimension"/>
+        <!--每秒波纹动画帧数， 默认是48帧。标准的电影动画帧数是24帧-->
+        <attr name="grvSpeed" format="integer"/>
+        <!--每一个波纹圈的颜色，格式如：{#008577, #D81B60, #00574B}-->
+        <attr name="grvColors" format="string"/>
+        <!--是否开启自动播放-->
+        <attr name="grvAutoRun" format="boolean"/>
+    </declare-styleable>
+
+</resources>

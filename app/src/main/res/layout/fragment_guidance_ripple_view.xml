@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <jsc.kit.guidance.GuidanceRippleView
+            android:id="@+id/ripple_view_1"
+            android:layout_width="@dimen/space_48"
+            android:layout_height="wrap_content"
+            app:grvColors="{#008577, #D81B60, #00574B}" />
+
+        <jsc.kit.guidance.GuidanceRippleView
+            android:id="@+id/ripple_view_2"
+            android:layout_width="@dimen/space_96"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_8" />
+
+        <jsc.kit.guidance.GuidanceRippleView
+            android:id="@+id/ripple_view_3"
+            android:layout_width="@dimen/space_144"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_8"
+            app:grvColors="{#D81B60}" />
+
+        <jsc.kit.guidance.GuidanceRippleView
+            android:id="@+id/ripple_view_4"
+            android:layout_width="@dimen/space_192"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_8"
+            app:grvColors="{#008577, #D81B60, #00574B}"
+            app:grvCount="5"
+            app:grvSpeed="36" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical">
+
+        <Button
+            android:enabled="false"
+            android:id="@+id/btn_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="start" />
+
+        <Button
+            android:id="@+id/btn_pause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="pause" />
+
+        <Button
+            android:id="@+id/btn_resume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="resume" />
+
+        <Button
+            android:id="@+id/btn_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="stop" />
+
+    </LinearLayout>
+
+
+</FrameLayout>
