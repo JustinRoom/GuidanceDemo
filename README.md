@@ -1,4 +1,4 @@
-# CameraMask
+# Guidance
 **LatestVersion**
 
 [ ![Download](https://api.bintray.com/packages/justinquote/maven/guidance-component/images/download.svg) ](https://bintray.com/justinquote/maven/guidance-component/_latestVersion)
