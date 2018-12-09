@@ -1,169 +1,197 @@
 # CameraMask
 **LatestVersion**
 
-[ ![Download](https://api.bintray.com/packages/justinquote/maven/camera-mask/images/download.svg) ](https://bintray.com/justinquote/maven/camera-mask/_latestVersion)
-
-<a href='https://bintray.com/justinquote/maven/camera-mask?source=watch' alt='Get automatic notifications about new "camera-mask" versions'><img src='https://www.bintray.com/docs/images/bintray_badge_color.png'></a>
-
-camera mask library and demo
+function guidance library and demo
 
 
 Scan QRCode to download demo application below:
 
-![](/app/src/main/res/drawable/camera_mask_demo_qr_code.png)
+![](/app/src/main/res/drawable/guidance_demo_qr_code.png)
 
 ### 1、implementation
 + 1.1、Gradle
 ```
-compile 'jsc.kit.cameramask:camera-mask:_latestVersion'
+
 ```
 + 1.2、Maven
 ```
-<dependency>
-  <groupId>jsc.kit.cameramask</groupId>
-  <artifactId>camera-mask</artifactId>
-  <version>_latestVersion</version>
-  <type>pom</type>
-</dependency>
+
 ```
 
 ### 2、attrs
-+ 2.1、[CameraLensView](/cameraMaskLibrary/src/main/java/jsc/kit/cameramask/CameraLensView.java)
++ 2.1、[GuidanceRippleView](/guidanceLibrary/src/main/java/jsc/kit/guidance/GuidanceRippleView.java)
 
 | 名称 | 类型 | 描述 |
 |:---|:---|:---|
-|`clvCameraLensSizeRatio`|float|相机镜头（或扫描框）大小占View宽度的百分比|
-|`clvCameraLensWidthWeight`|string,例如:`{1.5,4}`|相机镜头（或扫描框）宽度比重|
-|`clvCameraLensHeightWeight`|string,例如:`{1.5,4}`|相机镜头（或扫描框）高度比重|
-|`clvCameraLensWidth`|dimension|相机镜头（或扫描框）宽度|
-|`clvCameraLensHeight`|dimension|相机镜头（或扫描框）高度|
-|`clvCameraLensGravity`|enum(`top`、`center`、`bottom`)|相机镜头（或扫描框）位置|
-|`clvCameraLensTopMargin`|dimension|相机镜头（或扫描框）Y轴偏移量|
-|`clvCameraLensShape`|enum(`rectangle`、`circular`)|相机镜头（或扫描框）形状|
-|`clvCameraLens`|reference|相机镜头图片资源|
-|`clvMaskColor`|color|相机镜头遮罩颜色|
-|`clvBoxBorderColor`|color|扫描框边的颜色|
-|`clvBoxBorderWidth`|dimension|扫描框边的粗细|
-|`clvShowBoxAngle`|boolean|是否显示扫描框四个角|
-|`clvBoxAngleColor`|color|扫描框四个角的颜色|
-|`clvBoxAngleBorderWidth`|dimension|扫描框四个角边的粗细|
-|`clvBoxAngleLength`|dimension|扫描框四个角边的长度|
-|`clvText`|string|提示文字|
-|`clvTextColor`|color|提示文字颜色|
-|`clvTextSize`|dimension|提示文字字体大小|
-|`clvTextMathParent`|boolean|提示文字是否填充View的宽度。true与View等宽，false与相机镜头（或扫描框）等宽。|
-|`clvTextLocation`|enum(`belowCameraLens`、`aboveCameraLens`)|提示文字位于相机镜头（或扫描框）上方（或下方）|
-|`clvTextVerticalMargin`|dimension|提示文字与相机镜头（或扫描框）的间距|
-|`clvTextLeftMargin`|dimension|提示文字与View（或相机镜头或扫描框）的左间距|
-|`clvTextRightMargin`|dimension|提示文字与View（或相机镜头或扫描框）的右间距|
+|`grvCount`|integer|最大波纹圈数|
+|`grvSpace`|dimension|两个波纹圈之间距离间隔|
+|`grvSpeed`|integer|每秒波纹动画帧数， 默认是48帧。标准的电影动画帧数是24帧|
+|`grvColors`|string|每一个波纹圈的颜色，格式如：`{#008577, #D81B60, #00574B}`|
+|`grvAutoRun`|boolean|是否开启自动播放|
 
-+ 2.2、[ScannerBarView](/cameraMaskLibrary/src/main/java/jsc/kit/cameramask/ScannerBarView.java)
-
-| 名称 | 类型 | 描述 |
-|:---|:---|:---|
-|`sbvSrc`|reference|扫描条图片|
-
-
-+ 2.3、[CameraScannerMaskView](/cameraMaskLibrary/src/main/java/jsc/kit/cameramask/CameraScannerMaskView.java)
++ 2.2、[GuidanceLayout](/guidanceLibrary/src/main/java/jsc/kit/guidance/GuidanceLayout.java)
 
 | 子View | 类型 | 属性 |
 |:---|:---|:---|
-|`cameraLensView`|[CameraLensView](/cameraMaskLibrary/src/main/java/jsc/kit/cameramask/CameraLensView.java)|[CameraLensView](/cameraMaskLibrary/src/main/java/jsc/kit/cameramask/CameraLensView.java)所有属性|
-|`scannerBarView`|[ScannerBarView](/cameraMaskLibrary/src/main/java/jsc/kit/cameramask/ScannerBarView.java)|[ScannerBarView](/cameraMaskLibrary/src/main/java/jsc/kit/cameramask/ScannerBarView.java)所有属性|
+|`rippleViewView`|[GuidanceRippleView](/guidanceLibrary/src/main/java/jsc/kit/guidance/GuidanceRippleView.java)|[GuidanceRippleView](/guidanceLibrary/src/main/java/jsc/kit/guidance/GuidanceRippleView.java)所有属性|
 
 ### 3、usage
-+ 3.1、[CameraLensView](/cameraMaskLibrary/src/main/java/jsc/kit/cameramask/CameraLensView.java):
-`{1.5,4}`好比LinearLayout的`weightSum`=4, 其中相机镜头所占比重为1.5
++ 3.1、[GuidanceRippleView](/guidanceLibrary/src/main/java/jsc/kit/guidance/GuidanceRippleView.java):
 ```
-    <jsc.kit.cameramask.CameraLensView
-        android:id="@+id/camera_lens_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:clvCameraLensGravity="top"
-        app:clvCameraLensHeight="48dp"
-        app:clvCameraLensWidth="64dp"
-        app:clvCameraLensWidthWeight="{1.5,4}"
-        app:clvCameraLensHeightWeight="{1.5,4}"
-        app:clvCameraLensShape="rectangle"
-        app:clvCameraLensTopMargin="@dimen/space_32"
-        app:clvShowBoxAngle="true"
-        app:clvText="Put QR code inside camera lens please."
-        app:clvTextLocation="belowCameraLens"
-        app:clvTextMathParent="true"
-        app:clvTextSize="14sp"
-        app:clvTextVerticalMargin="8dp" />
+        <jsc.kit.guidance.GuidanceRippleView
+            android:id="@+id/ripple_view_4"
+            android:layout_width="@dimen/space_192"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_8"
+            app:grvColors="{#008577, #D81B60, #00574B}"
+            app:grvCount="5"
+            app:grvSpeed="36" />
 ```
 
-+ 3.2、[ScannerBarView](/cameraMaskLibrary/src/main/java/jsc/kit/cameramask/ScannerBarView.java):
++ 3.2、[GuidanceLayout](/guidanceLibrary/src/main/java/jsc/kit/guidance/GuidanceLayout.java):
 ```
-    <jsc.kit.cameramask.ScannerBarView
-        android:id="@+id/scanner_view"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/space_32"
-        app:svbSrc="drawable图片资源"
-        android:background="#f2f2f2" />
-```
-
-+ 3.3、[CameraScannerMaskView](/cameraMaskLibrary/src/main/java/jsc/kit/cameramask/CameraScannerMaskView.java):
-```
-    <jsc.kit.cameramask.CameraScannerMaskView
-        android:id="@+id/camera_scanner_mask_view"
+    <jsc.kit.guidance.GuidanceLayout
+        android:id="@+id/guidance_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:clvCameraLensWidthWeight="{1.5, 4}"
-        app:clvCameraLensHeight="96dp"
-        app:clvCameraLensHeightWeight="{2, 5}"
-        app:clvCameraLensTopMargin="64dp"
-        app:clvText="Put QR code inside camera lens please."
-        app:clvTextVerticalMargin="16dp" />
+        android:background="#99000000"
+        app:grvColors="{#D81B60}"
+        app:grvSpace="8dp"
+        app:grvSpeed="24" />
+```
+
++ 3.3、[GuidanceDialog](/guidanceLibrary/src/main/java/jsc/kit/guidance/GuidanceDialog.java):
+```
+    private void showGuidanceDialog() {
+        final GuidanceDialog dialog = new GuidanceDialog(getContext());
+        dialog.setTargetClickListener(new OnTargetClickListener() {
+            @Override
+            public boolean onTargetClick(GuidanceLayout layout) {
+                Toast.makeText(layout.getContext(), "clicked me", Toast.LENGTH_SHORT).show();
+                switch (layout.getCurStepIndex()) {
+                    case 0:
+                        showStep(layout, R.id.item_layout_1);
+                        return true;
+                    case 1:
+                        showStep(layout, R.id.item_layout_2);
+                        return true;
+                    case 2:
+                        showStep(layout, R.id.item_layout_3);
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
+        dialog.show();
+        GuidanceLayout guidanceLayout = dialog.getGuidanceLayout();
+        if (guidanceLayout == null)
+            return;
+        showStep(guidanceLayout, R.id.item_layout_0);
+    }
+```
++ 3.3、[GuidancePopupWindow](/guidanceLibrary/src/main/java/jsc/kit/guidance/GuidancePopupWindow.java):
+```
+    private void showContentGuidance() {
+        final GuidancePopupWindow popupWindow = new GuidancePopupWindow(getActivity());
+        popupWindow.setTargetClickListener(new OnTargetClickListener() {
+            @Override
+            public boolean onTargetClick(GuidanceLayout layout) {
+                Toast.makeText(layout.getContext(), "clicked me", Toast.LENGTH_SHORT).show();
+                switch (layout.getCurStepIndex()) {
+                    case 0:
+                        layout.removeAllCustomViews();
+                        showStep(layout, R.id.item_layout_1);
+                        return true;
+                    case 1:
+                        layout.removeAllCustomViews();
+                        showStep(layout, R.id.item_layout_2);
+                        return true;
+                    case 2:
+                        layout.removeAllCustomViews();
+                        showStep(layout, R.id.item_layout_3);
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
+        popupWindow.show();
+        GuidanceLayout guidanceLayout = popupWindow.getGuidanceLayout();
+        showStep(guidanceLayout, R.id.item_layout_0);
+    }
+```
+```
+    private void showStep(GuidanceLayout layout, int targetViewId) {
+        layout.removeAllCustomViews();
+        showStep(layout, getView().findViewById(targetViewId));
+    }
+
+    private void showStep(GuidanceLayout guidanceLayout, View target) {
+        Context context = guidanceLayout.getContext();
+        int statusBarHeight = ViewDrawingCacheUtils.getStatusBarHeight(context);
+        int actionBarHeight = ViewDrawingCacheUtils.getActionBarSize(context);
+        int[] location = ViewDrawingCacheUtils.getWindowLocation(target);
+        guidanceLayout.updateTargetViewLocation(
+                target, location[0],
+                location[1] - statusBarHeight,
+                new GuidanceLayout.OnInitRippleViewSizeListener() {
+                    @Override
+                    public int onInitializeRippleViewSize(@NonNull Bitmap bitmap) {
+                        return bitmap.getHeight();
+                    }
+                },
+                true,
+                new GuidanceLayout.OnRippleViewLocationUpdatedCallback() {
+                    @Override
+                    public void onRippleViewLocationUpdated(@NonNull GuidanceRippleView rippleView, @NonNull Rect targetRect) {
+
+                    }
+                });
+
+        ImageView imageView = new ImageView(guidanceLayout.getContext());
+        imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+        imageView.setImageResource(R.drawable.hand_o_up);
+        guidanceLayout.addCustomView(imageView, new GuidanceLayout.OnCustomViewAddListener<ImageView>() {
+
+            @Override
+            public void onViewInit(@NonNull ImageView customView, @NonNull FrameLayout.LayoutParams params, @NonNull Rect targetRect) {
+                customView.measure(0, 0);
+                params.topMargin = targetRect.bottom + 12;
+                params.leftMargin = targetRect.left - (customView.getMeasuredWidth() - targetRect.width()) / 2;
+            }
+
+            @Override
+            public void onViewAdded(@NonNull ImageView customView, @NonNull Rect targetRect) {
+                ObjectAnimator animator = ObjectAnimator.ofFloat(customView, View.TRANSLATION_Y, 0, 32, 0)
+                        .setDuration(1200);
+                animator.setRepeatCount(-1);
+                animator.start();
+            }
+        }, null);
+    }
 ```
 
 | 组件 | 使用示例 |
 |:---|:---|
-|[ScannerBarView](/cameraMaskLibrary/src/main/java/jsc/kit/cameramask/ScannerBarView.java)|[ScannerBarViewFragment](/app/src/main/java/jsc/exam/com/cameramask/fragments/ScannerBarViewFragment.java)|
-|[CameraLensView](/cameraMaskLibrary/src/main/java/jsc/kit/cameramask/CameraLensView.java)|[CameraLensViewFragment](/app/src/main/java/jsc/exam/com/cameramask/fragments/CameraLensViewFragment.java)|
-|[CameraScannerMaskView](/cameraMaskLibrary/src/main/java/jsc/kit/cameramask/CameraScannerMaskView.java)|[CameraScannerMaskViewFragment](/app/src/main/java/jsc/exam/com/cameramask/fragments/CameraScannerMaskViewFragment.java)|
+|[GuidanceRippleView](/guidanceLibrary/src/main/java/jsc/kit/guidance/GuidanceRippleView.java)|[GuidanceRippleViewFragment](/app/src/main/java/jsc/exam/com/guidance/fragments/GuidanceRippleViewFragment.java)|
+|[GuidanceLayout](/guidanceLibrary/src/main/java/jsc/kit/guidance/GuidanceLayout.java)|[GuidanceLayoutFragment](/app/src/main/java/jsc/exam/com/guidance/fragments/GuidanceLayoutFragment.java)|
+|[GuidanceDialog](/guidanceLibrary/src/main/java/jsc/kit/guidance/GuidanceDialog.java)|[GuidanceDialogFragment](/app/src/main/java/jsc/exam/com/guidance/fragments/GuidanceDialogFragment.java)|
+|[GuidancePopupWindow](/guidanceLibrary/src/main/java/jsc/kit/guidance/GuidancePopupWindow.java)|[GuidancePopupWindowFragment](/app/src/main/java/jsc/exam/com/guidance/fragments/GuidancePopupWindowFragment.java)|
 
 ### 4、Screenshots
-+ 4.1、[ScannerBarView](/cameraMaskLibrary/src/main/java/jsc/kit/cameramask/ScannerBarView.java)
++ 4.1、[GuidanceRippleView](/guidanceLibrary/src/main/java/jsc/kit/guidance/GuidanceRippleView.java)
 
-![ScannerBarView](/output/shots/scanner_bar_view_s.png)
+![GuidanceRippleView](/output/shots/guidance_ripple_view_s.png)
 
-+ 4.2、[CameraLensView](/cameraMaskLibrary/src/main/java/jsc/kit/cameramask/CameraLensView.java)
++ 4.2、[GuidanceLayout](/guidanceLibrary/src/main/java/jsc/kit/guidance/GuidanceLayout.java)
 
-![CameraLensView:picture](/output/shots/camera_lens_view_pic_s.png)
-![CameraLensView:circle-shape](/output/shots/camera_lens_view_circle_s.png)
-![CameraLensView:square-shape](/output/shots/camera_lens_view_square_s.png)
-![CameraLensView:crop-bitmap](/output/shots/camera_lens_view_bitmap_s.png)
-
-+ 4.3、[CameraScannerMaskView](/cameraMaskLibrary/src/main/java/jsc/kit/cameramask/CameraScannerMaskView.java)
-
-![CameraScannerMaskView](/output/shots/camera_scanner_mask_view_s.png)
+![GuidanceLayout](/output/shots/guidance_layout_s.png)
 
 ### 5、release log
 
-##### version:0.3.0
-+ 1、fix bugs
-+ 2、optimize CameraLensView, add attrs:  
-clvCameraLensWidthWeight：相机镜头宽度比重,例如:{1.5,4}  
-clvCameraLensHeightWeight：相机镜头高度比重,例如:`{5,2}
-
-##### version:0.2.1
-+ 1、optimize [CameraLensView](/cameraMaskLibrary/src/main/java/jsc/kit/cameramask/CameraLensView.java), add attrs:  
-clvCameraLensWidth：相机镜头（或扫描框）宽度  
-clvCameraLensHeight：相机镜头（或扫描框）高  
-clvCameraLensGravity(`top`、`center`、`bottom`)：相机镜头（或扫描框）位置  
-clvShowBoxAngle：是否显示扫描框四个角  
-
-
-##### version:0.1.2
-+ 1、optimize [CameraLensView](/cameraMaskLibrary/src/main/java/jsc/kit/cameramask/CameraLensView.java)
-
-##### version:0.1.1
-+ 1、add method in [CameraLensView](/cameraMaskLibrary/src/main/java/jsc/kit/cameramask/CameraLensView.java)、[CameraScannerMaskView](/cameraMaskLibrary/src/main/java/jsc/kit/cameramask/CameraScannerMaskView.java):  
-`Bitmap cropCameraLensRectBitmap(Bitmap src, boolean withRatio)`
+##### version:0.1.0
++ 1、create project
 
 ### LICENSE
 ```

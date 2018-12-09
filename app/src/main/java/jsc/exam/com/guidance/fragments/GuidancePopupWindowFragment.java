@@ -41,7 +41,7 @@ public class GuidancePopupWindowFragment extends BaseFragment {
         root.findViewById(R.id.btn_content).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showContentGuidanceDialog();
+                showContentGuidance();
             }
         });
         root.findViewById(R.id.btn_window).setOnClickListener(new View.OnClickListener() {
@@ -58,12 +58,12 @@ public class GuidancePopupWindowFragment extends BaseFragment {
         btnContent.postDelayed(new Runnable() {
             @Override
             public void run() {
-                showContentGuidanceDialog();
+                showContentGuidance();
             }
         }, 100);
     }
 
-    private void showContentGuidanceDialog() {
+    private void showContentGuidance() {
         final GuidancePopupWindow popupWindow = new GuidancePopupWindow(getActivity());
         popupWindow.setTargetClickListener(new OnTargetClickListener() {
             @Override
